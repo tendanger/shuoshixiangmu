@@ -19,15 +19,19 @@ for i in list:
     file.write(i)
 file.close()
 '''
-file = open('movies.xml','r')
+file = open('ipgb20190101.xml','r')
 lines = file.readlines()
-list=[]
+list=['<?xml version="1.0" encoding="UTF-8"?>','<root>'] #首行加<root>
 for lines in lines:
    if "xml" in lines:
      print(lines)
+   elif "DOCTYPE" in lines:
+        print(lines)
    else:
        list.append(lines)
 file.close()
+#最后一行加</root>
+list.append('</root>')
 file = open(r'target.xml', 'w')
 for i in list:
     file.write(i)
